@@ -7,6 +7,16 @@ Created on Wed Mar  2 20:28:12 2022
 
 from morse_codes import codes
 
+# using dictionary comprehension
+# found it on stackoverflow - https://stackoverflow.com/a/32094652
+CODE_REVERSED = {value:key for key,value in codes.items()}
+
+def to_morse(s):
+    return ' '.join(codes.get(i.upper()) for i in s)
+
+def from_morse(s):
+    return ''.join(CODE_REVERSED.get(i) for i in s.split())
+
 # extracting each character from a word and matching it with its corresponding morse code
 # adding 1 space between every character and '/' between every word
 def encrypt(message):
@@ -41,6 +51,9 @@ def decrypt(message):
 
 # temporary message for encryption and decryption
 def main():
+    to_morse('hello')
+    from_morse('.... . .-.. .-.. ---')
+    
     message = "Decision defines Destiny"
     result = encrypt(message.upper())
     print(result)
