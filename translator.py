@@ -39,6 +39,7 @@ def decrypt(message):
                 
     return decipher
 
+# temporary message for encryption and decryption
 def main():
     message = "Decision defines Destiny"
     result = encrypt(message.upper())
